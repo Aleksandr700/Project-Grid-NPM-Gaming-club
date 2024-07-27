@@ -1,0 +1,31 @@
+.sidebar
+    background-color: $color-green-dark
+    grid-column: sidebar-start / sidebar-end
+    grid-row: 1 / -1
+    padding: 3.5rem 1.5rem
+    // display: flex
+    // justify-content: center
+    // переносим сайд-бар вверх и позиционируем
+    @include phoneArg2(tab-land)
+        grid-row: 1 / 2
+        grid-column: 1 / -1
+        justify-content: end
+        align-content: center
+        padding: 0 4rem 1rem 0
+
+.humburger
+    // стандартные рамки кнопки
+    border: none
+    background: $color-gray-light
+    height: .2rem
+    width: 4.5rem
+    &::before, &::after
+        content: ""
+        background: $color-gray-light
+        height: .2rem
+        width: 4.5rem
+        display: block
+    &::before
+        transform: translateY(-1.5rem)
+    &::after
+        transform: translateY(1.5rem)

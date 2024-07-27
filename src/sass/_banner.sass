@@ -1,0 +1,53 @@
+.banner
+    &-img
+        background-color: $color-blue-dark
+        grid-column: full-start / call-end 4
+        display: grid
+        // на глаз позиционируем 2 изображения
+        grid-template-rows: repeat(24,1fr)
+        grid-template-columns: repeat(16,1fr)
+        background: url(../img/Rectangle5.png) center / cover no-repeat
+        // работа с банером, ставим текст и изображения на всю ширину ячеек
+        @include phoneArg1(tab-port)
+            grid-column: 1 / -1
+        &__img-1
+            width: 100%
+            // на глаз по ячейкам и строкам
+            grid-column: 3 / 15
+            grid-row: 3 / 12
+            // меняем расположение под новое разрешение
+            @include phoneArg1(tab-port)
+                grid-column: 2 / 10
+
+        &__img-2
+            width: 100%
+            grid-column: 6 / -1
+            grid-row: 10 / 24
+            transform: translateX(3.5rem)
+            @include phoneArg1(tab-port)
+                grid-column: 8 / 15
+
+    &-text
+        background-color: $color-blue-dark
+        grid-column: call-start 5 / full-end
+        // через флексы
+        // display: flex
+        // из стандартных строчек в колонки
+        // flex-direction: column
+        // по центру
+        // justify-content: center
+        // убрали растягивание
+        // align-items: flex-start
+        // задали в гибких единицах а не rem,чтобы при сужении падинги тоже сужались
+        // при адаптации на tab-port, задали новый падинг
+        // padding: 0 5vw
+        padding: 4rem
+        display: grid
+        align-content: center
+        justify-items: start
+        &__text
+            margin-bottom: 4rem
+        @include phoneArg1(tab-port)
+            grid-column: 1 / -1
+            // переносим текст наверх по строчкам
+            grid-row: 5 / 6

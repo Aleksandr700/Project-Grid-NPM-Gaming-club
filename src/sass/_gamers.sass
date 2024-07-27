@@ -1,0 +1,38 @@
+.gamers
+    background-color: $color-blue-dark
+    grid-column: call-start 7 / full-end
+    display: grid
+    // padding: 12rem 17.5rem
+    // 1 - под размер изображения 2 - под размер текста
+    // grid-template-columns: min-content max-content
+    // при адаптиве ниже 830 поместили геймеров в __box и убрали min-content
+    grid-template-columns: max-content
+    gap: 4rem 2rem
+    align-content: center
+    justify-content: center
+    // растягиваем геймеров 1 ячейки и до конца
+    @include phoneArg1(tab-port)
+        grid-column: 1 / -1
+        // резиним геймеров
+        grid-template-columns: repeat(auto-fit,minmax(25rem,1fr))
+        justify-items: center
+        padding: 2rem
+        // на размере ниже 350 сьезжал в лево третий геймер, добавили доп-правило
+    @include phoneArg(phone)
+        grid-template-columns: min-content
+        // по левому краю
+        justify-items: start
+    // разместили геймеров в box
+    &__box
+        display: grid
+        grid-template-columns: max-content max-content
+        gap: 2rem
+    &__title
+        grid-column: 1 / -1
+        justify-self: center
+    &__img
+        width: 7rem
+    &__score
+        font-size: 1.6rem
+        font-weight: 300
+        color: $color-gray-dark

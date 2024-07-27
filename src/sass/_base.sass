@@ -1,0 +1,67 @@
+$color-green-dark: #425844
+$color-green-light: #61A568
+
+$color-blue-dark: #101D2C
+
+$color-gray-dark: #AAAAAA
+$color-gray-light: #F5F5F5
+
+@mixin phoneArg($breakpoint)
+    @if $breakpoint == phone
+    @media only screen and (max-width: 420px)
+        @content
+@mixin phoneArg1($breakpoint)
+    @if $breakpoint == tab-port
+    @media only screen and (max-width: 830px)
+        @content
+@mixin phoneArg2($breakpoint)
+    @if $breakpoint == tab-land
+    @media only screen and (max-width: 1170px)
+        @content
+@mixin phoneArg3($breakpoint)  
+    @if $breakpoint == big-screen
+    @media only screen and (min-width: 1800px)
+        @content
+    
+    
+*, ::after, ::before
+    margin: 0
+    padding: 0
+    box-sizing: border-box
+
+html
+    // 1 rem - 10px
+    font-size: 62.5%
+    @include phoneArg2(tab-land)
+        font-size: 50%
+    @include phoneArg(phone)
+        font-size: 40%
+
+
+body
+    font-family: "Montserrat",sans-serif
+    font-weight: 400
+    color: $color-gray-light
+    font-size: 1.6rem
+    // line-height: 113%
+    background-color: $color-gray-light
+// Настройка сетки грид
+.container
+    display: grid
+    grid-template-rows: 80vh min-content 40vw repeat(3, min-content)
+    // 8 rem - жесткая ширина сайдбара, minmax(5rem,1fr) в начале и в конце создает в нашем гриде 2 пустые доп ячейки,
+    // как в разделе cards по боками, 8 ячеек с мин размером min-content по наличию контента и макс 
+    // размером жестким в 14 rem(8 ячеек / на 1145 макс размер = 143 или 14rem)
+    // full-start/end -  контекнт начиная с правого белого поля заканчивая левым
+    // center-start/end -  центровой контент без белых полей
+    // call-start/end -  названия непосредственно 8 ячеек
+    grid-template-columns: [sidebar-start] 8rem [sidebar-end full-start] minmax(5rem,1fr) [center-start] repeat(8, [call-start] minmax(min-content,14rem) [call-end] ) [center-end] minmax(5rem,1fr) [full-end]
+    // смещаем сайдбар
+    @include phoneArg2(tab-land)
+        grid-template-rows: 6rem 80vh min-content 40vw repeat(3, min-content)
+        grid-template-columns: [full-start] minmax(5rem,1fr) [center-start] repeat(8, [call-start] minmax(min-content,14rem) [call-end] ) [center-end] minmax(5rem,1fr) [full-end]
+        // настройка gamers(3 по счету в строчке, добавили min-content )
+        // сначала растягиваем header
+    @include phoneArg1(tab-port)
+        grid-template-rows: 6rem 100vh min-content min-content min-content 50vw repeat(3, min-content)
+        // 3 min-content для текста в banner, увеличили 40vw, для фоток

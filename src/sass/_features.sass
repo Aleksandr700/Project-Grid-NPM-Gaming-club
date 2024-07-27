@@ -1,0 +1,42 @@
+.feautures
+    // контент по макету 150 сверху по 0 право-лево
+    padding: 15rem 0
+    background-color: $color-gray-light
+    // настройка главной грид ячейки
+    grid-column: center-start / center-end
+    display: grid
+    // настройка гридов в гриде, 3 одинаковые колонки, в колонке по 2 элемента и система грид, автоматом
+    // создает 2 строчки
+    // grid-template-columns: repeat(3, 1fr)
+    // 2 - версия ячеек с готовым адаптивом
+    // С auto-fit контент будет растягиваться для заполнения всей ширины строки, меньше мин значения,
+    // контент сужается и перестраивается - добавка строк и ячеек, если больше контент растягивается
+    grid-template-columns: repeat(auto-fit,minmax(28rem,1fr))
+    // для уменьшения ячейки вслучае удаления или уменьшения текста внутри нее
+    align-items: start
+
+    gap: 3rem 4rem
+.feature
+    // настройка гридов данной ячейки(грид в гриде и в гриде)
+    display: grid
+    // 1 ячейка - иконка, 2 ячейка - тексты
+    grid-template-columns: min-content 1fr
+    // четкое кол-во строк
+    // grid-template-rows: min-content min-content
+    // настройка текста
+    gap: 1.5rem 2.5rem
+    &__text
+        font-size: 1.6rem
+        font-weight: 400
+        line-height: 113%
+        color: $color-green-dark
+    &__icon
+        width: 4.5rem
+        height: 4.5rem
+        // протянули иконку до конца вниз(удобней меньше кода)
+        grid-row: 1 / span 2
+        // данный метод сработает если будет указано четкое кол-во строк
+        // grid-row: 1 / -1
+        // подняли иконку чуть выше(как в макете)
+        transform: translateY(-1rem)
+    

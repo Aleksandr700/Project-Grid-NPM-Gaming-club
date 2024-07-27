@@ -1,0 +1,49 @@
+.cards
+    background-color: $color-gray-light
+    grid-column: center-start / center-end
+    display: grid
+    // как в ячейке features
+    grid-template-columns: repeat(auto-fit,minmax(25rem,1fr))
+    // между карточками 60,между строками 40
+    gap: 4rem 6rem
+    // отступ самой секции
+    padding: 10rem 0
+    .card
+        display: grid
+        // без строчек, при норм позиционировании элементы сами перестроются
+        grid-template-columns: repeat(2,1fr)
+        background-color: $color-blue-dark
+        gap: 3rem .5rem
+        &__img
+            width: 100%
+            // изображение от 1 ячейки и до конца
+            grid-column: 1 / -1
+        &__svg
+            width: 2rem
+            height: 2rem
+            margin-right: .5rem
+        &__title
+            // как с изображением
+            grid-column: 1 / -1
+            padding: 1.5rem
+            background-color: $color-green-dark
+            font-size: 1.6rem
+            font-weight: 700
+            text-align: center
+            // нет переноса слов
+            white-space: nowrap
+            // уменьшили масштаб заголовка
+            width: 75%
+            // по центру
+            justify-self: center
+            // подняли выше
+            transform: translateY(-90%)
+            
+        &__btn
+            // как с изображением
+            grid-column: 1 / -1
+.content
+    // выровняли по краям
+    margin-left: 2.5rem
+    // для построения элеметов в ряд(по стандарту во флексах)
+    display: flex

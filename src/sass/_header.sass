@@ -1,0 +1,52 @@
+.header
+    background-color: $color-blue-dark
+    grid-column: full-start / call-end 6
+    display: grid
+    // иконка, 1-заголовок, 2-заголовок, кнопка
+    grid-template-rows: 1fr min-content minmax(10rem, min-content) 1fr
+    background: url(../img/headphone.png) center /  cover no-repeat
+    // сверху слева снизу справа
+    padding: 5rem 5rem 5rem 5rem
+    // новое начало и конец для header
+    @include phoneArg1(tab-port)
+        grid-column: full-start / full-end
+    &__line-text
+        padding-right: 1rem
+        font-size: 1.6rem
+        font-weight: 700
+        color: $color-gray-dark
+        // настройка расположений линий 
+        display: grid
+        // линия, текст, линия 
+        grid-template-columns: 1fr max-content 1fr
+        gap: 2rem
+        align-items: center
+        margin-bottom: 1rem
+        // настройка линий
+        &::before, &::after
+            content: ""
+            height: .1rem
+            display: block
+            background-color: $color-gray-light
+    // обратились к иконкам через дочерний элемент(не задали класс)
+    &__img img
+        width: 8rem
+        height: 2.5rem
+        padding-right: 1rem
+    &__btn
+        // уменьшили кнопку
+        align-self: start
+        justify-self: start
+        // иконки
+    &__img
+        display: grid
+        grid-template-columns: repeat(4,1fr)
+        justify-items: center
+        gap: 3rem
+
+.logo
+    display: block
+    margin-bottom: 8rem
+    &__img
+        display: block
+        margin: 0 auto
